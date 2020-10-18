@@ -1,0 +1,24 @@
+{
+  "name": "automation-playwright-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cuzzybro/automation-playwright-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cuzzybro/automation-playwright-project/issues"
+  },
+  "homepage": "https://github.com/cuzzybro/automation-playwright-project#readme",
+  "devDependencies": {
+    "playwright": "^1.5.1",
+    "typescript": "^4.0.3"
+  }
+}
