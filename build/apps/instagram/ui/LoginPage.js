@@ -49,21 +49,39 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-var PageBase_1 = require("../PageBase");
-var LoginPage_1 = require("./ui/LoginPage");
-var Instagram = /** @class */ (function (_super) {
-    __extends(Instagram, _super);
-    function Instagram() {
+var PageBase_1 = require("../../PageBase");
+var InstagramSelectors_1 = require("../selectors/InstagramSelectors");
+var LoginPage = /** @class */ (function (_super) {
+    __extends(LoginPage, _super);
+    function LoginPage() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.loginPage = new LoginPage_1["default"](_this.context, _this.page);
-        _this.launch = function () { return __awaiter(_this, void 0, void 0, function () {
+        _this.register = function () { return __awaiter(_this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.page.goto("https://instagram.com")];
+                    case 0: return [4 /*yield*/, this.page.waitForLoadState("domcontentloaded")];
                     case 1:
                         _a.sent();
-                        return [4 /*yield*/, this.page.waitForLoadState("networkidle")];
-                    case 2:
+                        return [4 /*yield*/, this.page.waitForSelector(InstagramSelectors_1.LoginSelectors.signup_link, { timeout: 200 })];
+                    case 2: return [4 /*yield*/, (_a.sent()).click()];
+                    case 3:
+                        _a.sent();
+                        return [4 /*yield*/, this.page.waitForLoadState("domcontentloaded")];
+                    case 4:
+                        _a.sent();
+                        return [4 /*yield*/, this.page.type(InstagramSelectors_1.RegisterSelectors.emailOrPhone_input, this.generateRandomEmail())];
+                    case 5:
+                        _a.sent();
+                        return [4 /*yield*/, this.page.type(InstagramSelectors_1.RegisterSelectors.fullName_input, this.randomAlphaString(8) + " " + this.randomAlphaString(12))];
+                    case 6:
+                        _a.sent();
+                        return [4 /*yield*/, this.page.type(InstagramSelectors_1.RegisterSelectors.password_input, "!$@" + this.randomAlphaString(5) + this.randomNumber(3))];
+                    case 7:
+                        _a.sent();
+                        return [4 /*yield*/, this.page.type(InstagramSelectors_1.RegisterSelectors.username_input, this.randomAlphaString(6) + "" + this.randomNumber(3))];
+                    case 8:
+                        _a.sent();
+                        return [4 /*yield*/, this.page.click(InstagramSelectors_1.RegisterSelectors.signup_button)];
+                    case 9:
                         _a.sent();
                         return [2 /*return*/];
                 }
@@ -71,6 +89,9 @@ var Instagram = /** @class */ (function (_super) {
         }); };
         return _this;
     }
-    return Instagram;
+    LoginPage.prototype.generateRandomEmail = function () {
+        return this.randomAlphaString(5) + "." + this.randomAlphaString(8) + "@gmail.com";
+    };
+    return LoginPage;
 }(PageBase_1["default"]));
-exports["default"] = Instagram;
+exports["default"] = LoginPage;

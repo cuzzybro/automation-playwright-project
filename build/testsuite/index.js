@@ -40,7 +40,7 @@ var Facebook_1 = require("../apps/facebook/Facebook");
 var Instagram_1 = require("../apps/instagram/Instagram");
 var playwright = require('playwright');
 (function () { return __awaiter(void 0, void 0, void 0, function () {
-    var browser, context, facebook, instagram, fb, insta;
+    var browser, context, facebook, fb, instagram, insta;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, playwright.firefox.launch({ headless: false })];
@@ -52,19 +52,28 @@ var playwright = require('playwright');
                 return [4 /*yield*/, context.newPage()];
             case 3:
                 facebook = _a.sent();
-                return [4 /*yield*/, context.newPage()];
-            case 4:
-                instagram = _a.sent();
                 fb = new Facebook_1["default"](context, facebook);
                 return [4 /*yield*/, fb.launch()];
+            case 4:
+                _a.sent();
+                return [4 /*yield*/, facebook.close()];
             case 5:
                 _a.sent();
+                return [4 /*yield*/, context.newPage()];
+            case 6:
+                instagram = _a.sent();
                 insta = new Instagram_1["default"](context, instagram);
                 return [4 /*yield*/, insta.launch()];
-            case 6:
+            case 7:
+                _a.sent();
+                return [4 /*yield*/, insta.loginPage.register()];
+            case 8:
+                _a.sent();
+                return [4 /*yield*/, instagram.close()];
+            case 9:
                 _a.sent();
                 return [4 /*yield*/, browser.close()];
-            case 7:
+            case 10:
                 _a.sent();
                 return [2 /*return*/];
         }
